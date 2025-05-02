@@ -52,6 +52,9 @@ export default function ExpenseList({ expenses, className, onEdit }: ExpenseList
             <div>
               <h3 className="font-medium">{getCategoryLabel(expense.category)}</h3>
               <p className="text-sm text-gray-500">{getRemarkLabel(expense.remark)}</p>
+              {expense.imageUrl && (
+                <p className="text-sm text-blue-600 mt-1">Receipt attached</p>
+              )}
             </div>
             <div className="text-right">
               <p className="font-semibold">₹{expense.amount}</p>
@@ -62,41 +65,42 @@ export default function ExpenseList({ expenses, className, onEdit }: ExpenseList
           </div>
 
           {expandedExpense === expense.id && (
-            <div className="mt-2 pt-2 border-t flex justify-end gap-2">
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  onEdit?.(expense);
-                }}
-              >
-                <FiEdit2 className="h-4 w-4 mr-2" />
-                Edit
-              </Button>
-              <Button
-                variant="outline"
-                size="sm"
-                className="text-red-600 hover:text-red-700 hover:bg-red-50"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  handleDelete(expense.id);
-                }}
-              >
-                <FiTrash2 className="h-4 w-4 mr-2" />
-                Delete
-              </Button>
-            </div>
-          )}
-
-          {expense.imageUrl && (
-            <div className="mt-2">
-              <img
-                src={expense.imageUrl}
-                alt="Expense receipt"
-                className="max-h-32 w-auto rounded-lg object-cover"
-              />
-            </div>
+            <>
+              {expense.imageUrl && (
+                <div className="mt-2">
+                  <img
+                    src={expense.imageUrl}
+                    alt="Expense receipt"
+                    className="max-h-32 w-auto rounded-lg object-cover"
+                  />
+                </div>
+              )}
+              <div className="mt-2 pt-2 border-t flex justify-end gap-2">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onEdit?.(expense);
+                  }}
+                >
+                  <FiEdit2 className="h-4 w-4 mr-2" />
+                  Edit
+                </Button>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="text-red-600 hover:text-red-700 hover:bg-red-50"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleDelete(expense.id);
+                  }}
+                >
+                  <FiTrash2 className="h-4 w-4 mr-2" />
+                  Delete
+                </Button>
+              </div>
+            </>
           )}
         </div>
       ))}
