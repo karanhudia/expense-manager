@@ -13,6 +13,10 @@ const nextConfig = {
 
     // External packages that should not be bundled
     serverExternalPackages: ['@prisma/client', '@neondatabase/serverless'],
+
+    images: {
+        domains: ['res.cloudinary.com'],
+    },
 }
 
 module.exports = nextConfig
