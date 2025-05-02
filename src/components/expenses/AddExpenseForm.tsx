@@ -1,10 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useExpense } from "@/context/ExpenseContext";
 import { CreateExpenseInput } from "@/types/expense";
 import { ImageUpload } from "@/components/ui/ImageUpload";
-import { DatePicker } from "@/components/ui/DatePicker";
+import { DatePicker } from "@/components/ui/date-picker";
 import { TextField } from "@/components/forms/text-field";
 import { expenseCategories } from "@/config/expense-categories";
 import { expenseRemarks } from "@/config/expense-remarks";
@@ -12,8 +12,13 @@ import { Button } from "@/components/ui/button";
 import { Select } from "@/components/ui/select";
 
 interface AddExpenseFormProps {
-  expense?: CreateExpenseInput;
+  expense?: (CreateExpenseInput & { id?: string });
   onSuccess?: () => void;
+}
+
+function isMobile() {
+  if (typeof window === "undefined") return false;
+  return /Mobi|Android/i.test(window.navigator.userAgent);
 }
 
 export default function AddExpenseForm({ expense, onSuccess }: AddExpenseFormProps) {
@@ -26,14 +31,19 @@ export default function AddExpenseForm({ expense, onSuccess }: AddExpenseFormPro
     date: expense?.date || new Date().toISOString().split("T")[0],
     imageUrl: expense?.imageUrl || "",
   });
+  const [mobile, setMobile] = useState(false);
+
+  useEffect(() => {
+    setMobile(isMobile());
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
 
     try {
-      if (expense) {
-        await updateExpense(expense.id!, formData);
+      if (expense && expense.id) {
+        await updateExpense(expense.id, formData);
       } else {
         await addExpense(formData);
       }
@@ -77,27 +87,39 @@ export default function AddExpenseForm({ expense, onSuccess }: AddExpenseFormPro
         <label className="block text-sm font-medium text-gray-700">
           Category
         </label>
-        <Select
+        <select
           value={formData.category}
-          onChange={(value) =>
-            setFormData((prev) => ({ ...prev, category: value }))
+          onChange={(e) =>
+            setFormData((prev) => ({ ...prev, category: e.target.value as typeof prev.category }))
           }
-          options={expenseCategories}
           required
-        />
+          className="block w-full rounded-md border border-gray-300 px-4 py-2.5 pr-10 text-gray-900 shadow-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 placeholder:text-gray-400 disabled:cursor-not-allowed disabled:bg-gray-50 disabled:text-gray-500 transition-colors duration-200 appearance-none bg-white"
+          style={{ background: 'url("data:image/svg+xml,%3Csvg width=\'16\' height=\'16\' fill=\'none\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M4 6l4 4 4-4\' stroke=\'%236B7280\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-linejoin=\'round\'/%3E%3C/svg%3E") no-repeat right 0.75rem center/1.25rem 1.25rem' }}
+        >
+          <option value="">Select an option</option>
+          {expenseCategories.map((cat) => (
+            <option key={cat.value} value={cat.value}>{cat.label}</option>
+          ))}
+        </select>
       </div>
 
       <div className="space-y-2">
         <label className="block text-sm font-medium text-gray-700">
           Remark
         </label>
-        <Select
+        <select
           value={formData.remark}
-          onChange={(value) =>
-            setFormData((prev) => ({ ...prev, remark: value }))
+          onChange={(e) =>
+            setFormData((prev) => ({ ...prev, remark: e.target.value as typeof prev.remark }))
           }
-          options={expenseRemarks}
-        />
+          className="block w-full rounded-md border border-gray-300 px-4 py-2.5 pr-10 text-gray-900 shadow-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 placeholder:text-gray-400 disabled:cursor-not-allowed disabled:bg-gray-50 disabled:text-gray-500 transition-colors duration-200 appearance-none bg-white"
+          style={{ background: 'url("data:image/svg+xml,%3Csvg width=\'16\' height=\'16\' fill=\'none\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M4 6l4 4 4-4\' stroke=\'%236B7280\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-linejoin=\'round\'/%3E%3C/svg%3E") no-repeat right 0.75rem center/1.25rem 1.25rem' }}
+        >
+          <option value="">Select an option</option>
+          {expenseRemarks.map((rem) => (
+            <option key={rem.value} value={rem.value}>{rem.label}</option>
+          ))}
+        </select>
       </div>
 
       <div className="space-y-2">

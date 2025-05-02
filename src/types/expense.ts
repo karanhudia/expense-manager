@@ -16,8 +16,8 @@ export interface Expense {
 
 export interface CreateExpenseInput {
   amount: number;
-  category: ExpenseCategory;
-  remark: ExpenseRemark;
+  category: ExpenseCategory | "";
+  remark: ExpenseRemark | "";
   date: string;
   imageUrl?: string;
 }
