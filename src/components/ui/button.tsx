@@ -35,6 +35,21 @@ const buttonVariants = cva(
   }
 )
 
+// Add a global style for .btn-primary
+if (typeof window !== "undefined") {
+  const style = document.createElement('style');
+  style.innerHTML = `
+    .btn-primary {
+      background-color: var(--primary);
+      color: var(--primary-foreground);
+    }
+    .btn-primary:hover {
+      filter: brightness(0.95);
+    }
+  `;
+  document.head.appendChild(style);
+}
+
 function Button({
   className,
   variant,
@@ -46,11 +61,12 @@ function Button({
     asChild?: boolean
   }) {
   const Comp = asChild ? Slot : "button"
+  const variantClass = variant === "primary" ? "btn-primary" : ""
 
   return (
     <Comp
       data-slot="button"
-      className={cn(buttonVariants({ variant, size, className }))}
+      className={cn(variantClass, buttonVariants({ variant, size, className }))}
       {...props}
     />
   )
