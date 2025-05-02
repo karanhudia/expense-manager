@@ -20,7 +20,7 @@ export async function GET() {
       include: {
         expenses: {
           orderBy: {
-            date: "desc",
+            updatedAt: "desc",
           },
         },
       },
