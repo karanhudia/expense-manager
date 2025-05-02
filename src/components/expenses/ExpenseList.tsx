@@ -5,7 +5,7 @@ import { Expense } from "@/types/expense";
 import { format } from "date-fns";
 import { cn } from "@/lib/utils";
 import { useExpense } from "@/context/ExpenseContext";
-import { Edit2, Trash2 } from "lucide-react";
+import { FiEdit2, FiTrash2 } from "react-icons/fi";
 import { Button } from "@/components/ui/button";
 import { expenseCategories } from "@/config/expense-categories";
 import { expenseRemarks } from "@/config/expense-remarks";
@@ -71,7 +71,7 @@ export default function ExpenseList({ expenses, className, onEdit }: ExpenseList
                   onEdit?.(expense);
                 }}
               >
-                <Edit2 className="h-4 w-4 mr-2" />
+                <FiEdit2 className="h-4 w-4 mr-2" />
                 Edit
               </Button>
               <Button
@@ -83,7 +83,7 @@ export default function ExpenseList({ expenses, className, onEdit }: ExpenseList
                   handleDelete(expense.id);
                 }}
               >
-                <Trash2 className="h-4 w-4 mr-2" />
+                <FiTrash2 className="h-4 w-4 mr-2" />
                 Delete
               </Button>
             </div>

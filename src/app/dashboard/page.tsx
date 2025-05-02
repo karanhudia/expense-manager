@@ -11,7 +11,7 @@ import { useEffect } from "react";
 import { companies } from "@/config/companies";
 import AddExpenseForm from "@/components/expenses/AddExpenseForm";
 import ExpenseList from "@/components/expenses/ExpenseList";
-import { Plus } from "lucide-react";
+import { FiPlus } from "react-icons/fi";
 import { Expense } from "@/types/expense";
 
 export default function DashboardPage() {
@@ -84,7 +84,7 @@ export default function DashboardPage() {
                   setIsAddExpenseOpen(true);
                 }}
               >
-                <Plus className="h-4 w-4" />
+                <FiPlus className="h-4 w-4" />
                 Add Expense
               </Button>
             </div>

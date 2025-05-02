@@ -6,7 +6,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { ChevronDown } from "lucide-react";
+import { FiChevronDown } from "react-icons/fi";
 
 interface DropdownProps<T extends string> {
   value: T;
@@ -42,7 +42,7 @@ export function Dropdown<T extends string>({
             )}
           >
             {selectedOption?.label || placeholder}
-            <ChevronDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+            <FiChevronDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent className="w-full">

@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { ImageIcon, X } from "lucide-react";
+import { FiImage, FiX } from "react-icons/fi";
 import Image from "next/image";
 
 interface ImageUploadProps {
@@ -52,12 +52,12 @@ export function ImageUpload({
               className="absolute right-2 top-2 h-6 w-6"
               onClick={() => onChange(null)}
             >
-              <X className="h-4 w-4" />
+              <FiX className="h-4 w-4" />
             </Button>
           </>
         ) : (
           <label className="flex cursor-pointer flex-col items-center justify-center">
-            <ImageIcon className="h-8 w-8 text-gray-400" />
+            <FiImage className="h-8 w-8 text-gray-400" />
             <span className="mt-2 text-sm text-gray-500">
               Click to upload or drag and drop
             </span>

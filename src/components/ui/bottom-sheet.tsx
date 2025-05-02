@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
-import { X } from "lucide-react";
+import { FiX } from "react-icons/fi";
 
 interface BottomSheetProps {
   isOpen: boolean;
@@ -79,7 +79,7 @@ export function BottomSheet({
             onClick={onClose}
             className="absolute right-4 top-4 rounded-full p-1 hover:bg-gray-100"
           >
-            <X className="h-5 w-5" />
+            <FiX className="h-5 w-5" />
           </button>
         </div>
         {children}

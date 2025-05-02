@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "./button";
-import { Plus } from "lucide-react";
+import { FiPlus } from "react-icons/fi";
 import { cn } from "@/lib/utils";
 
 interface FloatingActionButtonProps {
@@ -21,7 +21,7 @@ export function FloatingActionButton({
         className
       )}
     >
-      <Plus className="h-6 w-6" />
+      <FiPlus className="h-6 w-6" />
     </Button>
   );
 } 
