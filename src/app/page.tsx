@@ -19,7 +19,7 @@ export default function Home() {
             <Button variant="outline">Register</Button>
           </Link>
         </div>
-      </div>
-    </main>
+        </div>
+      </main>
   );
 }

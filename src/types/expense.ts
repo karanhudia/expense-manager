@@ -7,22 +7,21 @@ export interface Expense {
   category: ExpenseCategory;
   remark: ExpenseRemark;
   date: Date;
-  imageUrl: string | null;
-  userId: string;
-  companyId: string;
+  imageUrl?: string;
+  isReimbursed: boolean;
   createdAt: Date;
   updatedAt: Date;
-  isReimbursed: boolean;
+  userId: string;
 }
 
 export interface CreateExpenseInput {
   amount: number;
   category: ExpenseCategory;
   remark: ExpenseRemark;
-  date: Date;
-  imageUrl: string | null;
+  date: string;
+  imageUrl?: string;
 }
 
-export interface UpdateExpenseInput extends Partial<CreateExpenseInput> {
-  id: string;
-} 
+export interface UpdateExpenseInput extends CreateExpenseInput {
+  isReimbursed?: boolean;
+}

@@ -10,13 +10,12 @@ export interface User {
 }
 
 export interface CreateUserInput {
+  name: string;
   email: string;
   password: string;
-  name: string;
-  companyId: Company;
 }
 
 export interface LoginInput {
   email: string;
   password: string;
-} 
+}

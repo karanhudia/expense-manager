@@ -1,34 +1,39 @@
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+"use client";
+
 import { cn } from "@/lib/utils";
-import { forwardRef } from "react";
 
 interface TextFieldProps extends React.InputHTMLAttributes<HTMLInputElement> {
-  label?: string;
+  label: string;
   error?: string;
-  containerClassName?: string;
+  className?: string;
 }
 
-const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
-  ({ label, error, containerClassName, className, ...props }, ref) => {
-    return (
-      <div className={cn("space-y-2", containerClassName)}>
-        {label && <Label htmlFor={props.id}>{label}</Label>}
-        <Input
-          ref={ref}
-          className={cn(
-            "w-full",
-            error && "border-red-500 focus-visible:ring-red-500",
-            className
-          )}
-          {...props}
-        />
-        {error && <p className="text-sm text-red-500">{error}</p>}
-      </div>
-    );
-  }
-);
-
-TextField.displayName = "TextField";
-
-export { TextField }; 
+export function TextField({
+  label,
+  error,
+  className,
+  ...props
+}: TextFieldProps) {
+  return (
+    <div className="space-y-2">
+      <label className="block text-sm font-medium text-gray-700">
+        {label}
+      </label>
+      <input
+        className={cn(
+          "block w-full rounded-md border border-gray-300 px-4 py-2.5 text-gray-900 shadow-sm",
+          "focus:border-blue-500 focus:ring-1 focus:ring-blue-500",
+          "placeholder:text-gray-400",
+          "disabled:cursor-not-allowed disabled:bg-gray-50 disabled:text-gray-500",
+          "transition-colors duration-200",
+          error && "border-red-300 focus:border-red-500 focus:ring-red-500",
+          className
+        )}
+        {...props}
+      />
+      {error && (
+        <p className="text-sm text-red-600">{error}</p>
+      )}
+    </div>
+  );
+} 

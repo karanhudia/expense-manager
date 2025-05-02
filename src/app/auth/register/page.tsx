@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { useAuth } from "@/context/auth/auth-context";
+import { useAuth } from "@/context/AuthContext";
 import { Button } from "@/components/ui/button";
 import { TextField } from "@/components/forms/text-field";
 import { Dropdown } from "@/components/forms/dropdown";
@@ -21,7 +21,7 @@ export default function RegisterPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      await register(email, password, name);
+      await register(name, email, password);
       router.push("/dashboard");
     } catch (err) {
       setError("Registration failed. Please try again.");

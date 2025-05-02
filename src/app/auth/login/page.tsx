@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { useAuth } from "@/context/auth/auth-context";
+import { useAuth } from "@/context/AuthContext";
 import { Button } from "@/components/ui/button";
 import { TextField } from "@/components/forms/text-field";
 import Link from "next/link";

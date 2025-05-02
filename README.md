@@ -1,103 +1,139 @@
-# Expense Manager Application
+# Expense Manager
 
-A Next.js application for managing expenses and reimbursements.
+A modern expense management application built with Next.js, TypeScript, and Prisma. This application allows users to track their expenses, manage reimbursements, and maintain a clear record of their financial transactions.
 
-## Current Progress
+## Features
 
-### Implemented Components
-- ✅ Reusable form components:
-  - TextField
-  - Dropdown
-  - DatePicker
-  - ImageUpload
-- ✅ Configuration files:
-  - Expense categories
-  - Expense remarks
-  - Companies
-- ✅ Type definitions:
-  - Expense types
-  - User types
+- 🔐 **User Authentication**
+  - Secure login and registration
+  - Company-based user management
+  - Protected routes and API endpoints
 
-### Pending Implementation
-- 🔄 Authentication System
-  - User registration
-  - Login functionality
-  - Protected routes
-- 🔄 Expense Management
-  - Expense creation form
-  - Expense list view
-  - Expense editing
-  - Image upload and download
-- 🔄 Dashboard
-  - Pending reimbursements summary
-  - Monthly expense reports
-  - Excel export functionality
-- 🔄 API Routes
-  - User authentication endpoints
-  - Expense CRUD operations
-  - Report generation
+- 💰 **Expense Management**
+  - Add expenses with categories and remarks
+  - Upload receipt images
+  - Track pending reimbursements
+  - View expense history
+  - Edit and delete expenses
+  - Mobile-friendly interface with bottom sheet for adding expenses
+
+- 📱 **Responsive Design**
+  - Mobile-first approach
+  - Floating action button for mobile
+  - Bottom sheet for adding/editing expenses
+  - Clean and intuitive interface
+
+- 🏢 **Company Integration**
+  - Company-specific user accounts
+  - Company-based expense tracking
+  - Easy company switching
+
+## Tech Stack
+
+- **Frontend**
+  - Next.js 14 (App Router)
+  - TypeScript
+  - Tailwind CSS
+  - Shadcn UI Components
+  - React Context for state management
+
+- **Backend**
+  - Next.js API Routes
+  - Prisma ORM
+  - PostgreSQL Database
+  - JWT Authentication
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
-npm run dev
-```
+- Node.js 18+ and npm
+- PostgreSQL database
+- Environment variables (see `.env.example`)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/expense-manager.git
+   cd expense-manager
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Set up environment variables:
+   ```bash
+   cp .env.example .env
+   ```
+   Update the `.env` file with your database credentials and other settings.
+
+4. Set up the database:
+   ```bash
+   npx prisma generate
+   npx prisma db push
+   ```
+
+5. Run the development server:
+   ```bash
+   npm run dev
+   ```
+
+6. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ## Project Structure
 
 ```
 src/
-├── components/
-│   ├── forms/         # Reusable form components
-│   ├── ui/           # Shadcn UI components
-│   └── layout/       # Layout components
-├── config/           # Configuration files
-├── context/          # React Context providers
-├── hooks/            # Custom React hooks
-├── lib/              # Utility functions
-├── types/            # TypeScript type definitions
-└── app/              # Next.js app router
-    ├── api/          # API routes
-    └── auth/         # Authentication pages
+├── app/                    # Next.js app router pages
+├── components/            # React components
+│   ├── expenses/         # Expense-related components
+│   ├── forms/           # Form components
+│   ├── providers/       # Context providers
+│   └── ui/             # UI components
+├── config/              # Configuration files
+├── context/            # React context
+├── lib/               # Utility functions
+├── services/         # API service functions
+└── types/           # TypeScript type definitions
 ```
 
-## Dependencies
+## Features in Detail
 
-- Next.js
-- React
-- TypeScript
-- Tailwind CSS
-- Shadcn UI
-- date-fns
-- lucide-react
+### Authentication
+- Secure user registration and login
+- Protected routes and API endpoints
+- Company-based user management
+- Session management with cookies
 
-## Features
+### Expense Management
+- Add expenses with:
+  - Amount
+  - Category (predefined options)
+  - Remark (predefined options)
+  - Date
+  - Receipt image upload
+- View expense history
+- Edit existing expenses
+- Delete expenses
+- Track pending reimbursements
 
-- User authentication
-- Expense tracking
-- Image upload for receipts
-- Monthly expense reports
-- Excel export with images
-- Responsive design
-- Reusable components
+### Mobile Experience
+- Floating action button for quick expense addition
+- Bottom sheet for adding/editing expenses
+- Swipe-to-dismiss functionality
+- Responsive design for all screen sizes
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Contributing
 
-## Learn More
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-To learn more about Next.js, take a look at the following resources:
+## License
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
