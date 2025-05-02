@@ -1,4 +1,41 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Expense Manager Application
+
+A Next.js application for managing expenses and reimbursements.
+
+## Current Progress
+
+### Implemented Components
+- ✅ Reusable form components:
+  - TextField
+  - Dropdown
+  - DatePicker
+  - ImageUpload
+- ✅ Configuration files:
+  - Expense categories
+  - Expense remarks
+  - Companies
+- ✅ Type definitions:
+  - Expense types
+  - User types
+
+### Pending Implementation
+- 🔄 Authentication System
+  - User registration
+  - Login functionality
+  - Protected routes
+- 🔄 Expense Management
+  - Expense creation form
+  - Expense list view
+  - Expense editing
+  - Image upload and download
+- 🔄 Dashboard
+  - Pending reimbursements summary
+  - Monthly expense reports
+  - Excel export functionality
+- 🔄 API Routes
+  - User authentication endpoints
+  - Expense CRUD operations
+  - Report generation
 
 ## Getting Started
 
@@ -6,17 +43,47 @@ First, run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
+
+```
+src/
+├── components/
+│   ├── forms/         # Reusable form components
+│   ├── ui/           # Shadcn UI components
+│   └── layout/       # Layout components
+├── config/           # Configuration files
+├── context/          # React Context providers
+├── hooks/            # Custom React hooks
+├── lib/              # Utility functions
+├── types/            # TypeScript type definitions
+└── app/              # Next.js app router
+    ├── api/          # API routes
+    └── auth/         # Authentication pages
+```
+
+## Dependencies
+
+- Next.js
+- React
+- TypeScript
+- Tailwind CSS
+- Shadcn UI
+- date-fns
+- lucide-react
+
+## Features
+
+- User authentication
+- Expense tracking
+- Image upload for receipts
+- Monthly expense reports
+- Excel export with images
+- Responsive design
+- Reusable components
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
