@@ -13,6 +13,7 @@ import AddExpenseForm from "@/components/expenses/AddExpenseForm";
 import ExpenseList from "@/components/expenses/ExpenseList";
 import { FiPlus } from "react-icons/fi";
 import { Expense } from "@/types/expense";
+import LoadingSpinner from "@/components/ui/LoadingSpinner";
 
 export default function DashboardPage() {
   const { user, loading, logout } = useAuth();
@@ -28,7 +29,7 @@ export default function DashboardPage() {
   }, [user, loading, router]);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <LoadingSpinner className="min-h-screen" />;
   }
 
   if (!user) {
