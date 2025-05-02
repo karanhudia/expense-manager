@@ -65,12 +65,12 @@ export function ImageUpload({ onUpload }: ImageUploadProps) {
     <div className="mt-1">
       {uploadedImage ? (
         <div className="relative">
-          <div className="relative h-32 w-full rounded-lg overflow-hidden">
+          <div className="relative h-32 w-auto max-w-full rounded-lg overflow-hidden flex items-center justify-center bg-gray-100">
             <Image
               src={uploadedImage}
               alt="Uploaded receipt"
               fill
-              className="object-cover"
+              className="object-contain"
             />
           </div>
           <button
