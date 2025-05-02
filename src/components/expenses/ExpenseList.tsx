@@ -8,6 +8,7 @@ import { useExpense } from "@/context/ExpenseContext";
 import { Edit2, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { expenseCategories } from "@/config/expense-categories";
+import { expenseRemarks } from "@/config/expense-remarks";
 
 interface ExpenseListProps {
   expenses: Expense[];
@@ -22,6 +23,11 @@ export default function ExpenseList({ expenses, className, onEdit }: ExpenseList
   const getCategoryLabel = (category: string) => {
     const foundCategory = expenseCategories.find(c => c.value === category);
     return foundCategory ? foundCategory.label : category;
+  };
+
+  const getRemarkLabel = (remark: string) => {
+    const foundRemark = expenseRemarks.find(r => r.value === remark);
+    return foundRemark ? foundRemark.label : remark;
   };
 
   const handleDelete = async (id: string) => {
@@ -45,7 +51,7 @@ export default function ExpenseList({ expenses, className, onEdit }: ExpenseList
           <div className="flex items-start justify-between">
             <div>
               <h3 className="font-medium">{getCategoryLabel(expense.category)}</h3>
-              <p className="text-sm text-gray-500">{expense.remark}</p>
+              <p className="text-sm text-gray-500">{getRemarkLabel(expense.remark)}</p>
             </div>
             <div className="text-right">
               <p className="font-semibold">₹{expense.amount}</p>
