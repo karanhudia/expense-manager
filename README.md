@@ -126,6 +126,32 @@ src/
 - Swipe-to-dismiss functionality
 - Responsive design for all screen sizes
 
+## Authentication & Session Management
+
+This app uses HTTP cookies to maintain user sessions securely. Here's how it works:
+
+- **Login/Register:**
+  - When a user logs in or registers, the backend sets a cookie named `user-email` containing the user's email address.
+  - This cookie is set as `httpOnly`, `secure` (in production), `sameSite=lax`, and is scoped to the root path (`/`).
+  - The cookie is set using Next.js API routes (`/api/auth/login` and `/api/auth/register`).
+
+- **Session Validation:**
+  - On each page load or API request that requires authentication, the backend checks for the presence of the `user-email` cookie.
+  - If the cookie is present and valid, the user is considered authenticated and their session is active.
+  - If the cookie is missing or invalid, the user is redirected to the login page or receives an unauthorized error.
+
+- **Logout:**
+  - When the user logs out, the backend clears the `user-email` cookie, ending the session.
+
+- **Security:**
+  - The cookie is `httpOnly` (not accessible via JavaScript), which helps prevent XSS attacks.
+  - In production, the cookie is also set as `secure`, so it is only sent over HTTPS.
+
+- **Usage in API Routes:**
+  - All protected API routes (such as `/api/expenses`) check the `user-email` cookie to identify the current user and fetch or modify their data accordingly.
+
+This approach provides a simple, secure, and stateless way to manage user sessions in a Next.js app.
+
 ## Contributing
 
 1. Fork the repository
