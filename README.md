@@ -152,6 +152,38 @@ This app uses HTTP cookies to maintain user sessions securely. Here's how it wor
 
 This approach provides a simple, secure, and stateless way to manage user sessions in a Next.js app.
 
+## Progressive Web App (PWA) Support
+
+This app is a Progressive Web App (PWA), which means you can install it on your Android (and iOS) device for a native app-like experience. Here's how it works and how it was set up:
+
+### Features
+- Installable on Android/iOS and desktop
+- Launches in a standalone window with your app icon
+- Custom splash screen and theme color
+- Works offline for cached pages (basic offline support)
+
+### How PWA is enabled
+- Uses the [`next-pwa`](https://github.com/shadowwalker/next-pwa) plugin for Next.js
+- Includes a `public/manifest.json` file with app name, icons, theme color, and description
+- App icons are placed in `public/icons/` as `icon-192x192.png` and `icon-512x512.png`
+- The manifest and icons are referenced in the app's `<head>` in `src/app/layout.tsx`:
+  ```tsx
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#2563eb" />
+    <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
+  </head>
+  ```
+- PWA is only enabled in production builds
+
+### How to use
+1. Open the app in Chrome (or another PWA-supporting browser) on your phone or desktop
+2. Open the browser menu and select "Add to Home screen"
+3. The app will install and appear on your device with its icon
+4. Launching from the home screen opens the app in a standalone window
+
+You can customize the manifest, icons, and theme color to match your brand.
+
 ## Contributing
 
 1. Fork the repository
