@@ -195,3 +195,29 @@ You can customize the manifest, icons, and theme color to match your brand.
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Recent Improvements
+
+### Persistent Sessions
+- User sessions are now maintained for 30 days using a persistent cookie (`maxAge` set to 30 days). Users remain logged in until they explicitly log out, even after closing the app or browser.
+
+### Seamless Auth Redirects
+- Home, login, and register pages automatically redirect authenticated users to the dashboard.
+- These pages do not render any content until authentication status is known, preventing any flash of the public UI for logged-in users.
+
+### Improved Mobile & PWA Experience
+- All public pages (home, login, register) have consistent padding and spacing, ensuring cards never touch the phone's border.
+- The floating action button for adding expenses is larger and more prominent on mobile.
+- The app bar/header is now visually integrated, with a subtle bottom border and proper alignment.
+- The dashboard header now touches the phone's edge for a true app-bar feel, with content aligned to the main content.
+
+### PWA & Installability
+- The app is fully installable as a PWA, with a manifest, icons, and service worker.
+- The theme color and status bar color are set for a native feel.
+
+### UI/UX Polish
+- The landing page, login, and register screens have been visually enhanced for a modern, delightful first impression.
+- No more double spacing between header and content.
+- Subtle, delightful borders and accent colors are used throughout the app for a cohesive look.
+
+---

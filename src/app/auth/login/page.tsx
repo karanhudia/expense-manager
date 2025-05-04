@@ -6,6 +6,7 @@ import { useAuth } from "@/context/AuthContext";
 import { Button } from "@/components/ui/button";
 import { TextField } from "@/components/forms/text-field";
 import Link from "next/link";
+import LoadingSpinner from "@/components/ui/LoadingSpinner";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -21,7 +22,11 @@ export default function LoginPage() {
     }
   }, [authLoading, user, router]);
 
-  if (!authLoading && user) {
+  if (authLoading) {
+    return <LoadingSpinner className="min-h-screen" />;
+  }
+
+  if (user) {
     return null;
   }
 

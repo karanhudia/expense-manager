@@ -8,6 +8,7 @@ import { TextField } from "@/components/forms/text-field";
 import { Dropdown } from "@/components/forms/dropdown";
 import { companies } from "@/config/companies";
 import Link from "next/link";
+import LoadingSpinner from "@/components/ui/LoadingSpinner";
 
 export default function RegisterPage() {
   const [name, setName] = useState("");
@@ -25,7 +26,11 @@ export default function RegisterPage() {
     }
   }, [authLoading, user, router]);
 
-  if (!authLoading && user) {
+  if (authLoading) {
+    return <LoadingSpinner className="min-h-screen" />;
+  }
+
+  if (user) {
     return null;
   }
 

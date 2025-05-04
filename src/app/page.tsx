@@ -6,6 +6,7 @@ import { FiTrendingUp } from "react-icons/fi";
 import { useAuth } from "@/context/AuthContext";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
+import LoadingSpinner from "@/components/ui/LoadingSpinner";
 
 export default function Home() {
   const { user, loading } = useAuth();
@@ -17,7 +18,11 @@ export default function Home() {
     }
   }, [loading, user, router]);
 
-  if (!loading && user) {
+  if (loading) {
+    return <LoadingSpinner className="min-h-screen" />;
+  }
+
+  if (user) {
     return null;
   }
 
