@@ -77,14 +77,17 @@ export default function DashboardPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <div className="w-full bg-white flex justify-between items-center py-4 px-4 border-b border-blue-100">
+        <h1 className="text-2xl font-bold text-gray-900">Dashboard</h1>
+        <Button
+          variant="outline"
+          onClick={handleLogout}
+          className="whitespace-nowrap border-blue-600 text-blue-700 hover:bg-blue-50"
+        >
+          Logout
+        </Button>
+      </div>
       <div className="max-w-4xl mx-auto px-4 py-6 pb-8">
-        <div className="w-full bg-white flex justify-between items-center px-4 py-4 border-b border-gray-200 mb-8">
-          <h1 className="text-2xl font-bold">Dashboard</h1>
-          <Button variant="outline" onClick={handleLogout} className="whitespace-nowrap">
-            Logout
-          </Button>
-        </div>
-
         <div className="space-y-4">
           <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-xl shadow border border-blue-100 mb-2">
             <h2 className="text-xl font-semibold mb-2 text-blue-900">Welcome, {user.name}!</h2>
