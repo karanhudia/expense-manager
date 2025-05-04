@@ -21,6 +21,10 @@ export default function LoginPage() {
     }
   }, [authLoading, user, router]);
 
+  if (!authLoading && user) {
+    return null;
+  }
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
@@ -35,7 +39,7 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center px-4 bg-gray-50">
+    <div className="flex min-h-screen items-center justify-center px-4 bg-gray-50 overflow-hidden">
       <div className="w-full max-w-md space-y-8 rounded-2xl border p-6 shadow-2xl bg-white">
         <div className="text-center">
           <h1 className="text-2xl font-bold">Login</h1>

@@ -17,8 +17,12 @@ export default function Home() {
     }
   }, [loading, user, router]);
 
+  if (!loading && user) {
+    return null;
+  }
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-br from-blue-100 via-indigo-100 to-pink-100 px-4">
+    <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-br from-blue-100 via-indigo-100 to-pink-100 px-4 overflow-hidden">
       <div className="z-10 w-full max-w-md mx-auto p-8 rounded-3xl shadow-2xl bg-white/90 flex flex-col items-center animate-fade-in">
         <div className="flex flex-col items-center mb-6">
           <div className="bg-gradient-to-br from-blue-400 to-indigo-500 rounded-full p-5 shadow-lg mb-4 animate-bounce-slow">
