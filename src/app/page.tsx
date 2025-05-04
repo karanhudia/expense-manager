@@ -3,8 +3,20 @@
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { FiTrendingUp } from "react-icons/fi";
+import { useAuth } from "@/context/AuthContext";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 export default function Home() {
+  const { user, loading } = useAuth();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!loading && user) {
+      router.replace("/dashboard");
+    }
+  }, [loading, user, router]);
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-br from-blue-100 via-indigo-100 to-pink-100 px-4">
       <div className="z-10 w-full max-w-md mx-auto p-8 rounded-3xl shadow-2xl bg-white/90 flex flex-col items-center animate-fade-in">
