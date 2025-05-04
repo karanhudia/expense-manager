@@ -33,8 +33,8 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center">
-      <div className="w-full max-w-md space-y-8 rounded-lg border p-6 shadow-lg">
+    <div className="flex min-h-screen items-center justify-center px-4 bg-gray-50">
+      <div className="w-full max-w-md space-y-8 rounded-2xl border p-6 shadow-2xl bg-white">
         <div className="text-center">
           <h1 className="text-2xl font-bold">Register</h1>
           <p className="mt-2 text-gray-600">

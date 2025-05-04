@@ -17,11 +17,11 @@ export function FloatingActionButton({
     <Button
       onClick={onClick}
       className={cn(
-        "fixed bottom-6 right-6 rounded-full p-4 shadow-lg md:hidden",
+        "fixed bottom-6 right-6 rounded-full p-8 shadow-2xl md:hidden z-50",
         className
       )}
     >
-      <FiPlus className="h-6 w-6" />
+      <FiPlus className="h-14 w-14" />
     </Button>
   );
 } 

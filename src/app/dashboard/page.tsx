@@ -28,6 +28,28 @@ export default function DashboardPage() {
     }
   }, [user, loading, router]);
 
+  // Prevent back navigation to login from dashboard (PWA/mobile)
+  useEffect(() => {
+    const handlePopState = (e: PopStateEvent) => {
+      // If on dashboard root, try to close the app or do nothing
+      if (window.location.pathname === "/dashboard") {
+        e.preventDefault();
+        // Try to close the app (works in some PWA contexts)
+        window.close();
+        // If window.close() doesn't work, push the state back
+        window.history.pushState(null, "", window.location.pathname);
+      }
+    };
+    window.addEventListener("popstate", handlePopState);
+    // Push a new state so the first back press triggers popstate
+    if (window.location.pathname === "/dashboard") {
+      window.history.pushState(null, "", window.location.pathname);
+    }
+    return () => {
+      window.removeEventListener("popstate", handlePopState);
+    };
+  }, []);
+
   if (loading) {
     return <LoadingSpinner className="min-h-screen" />;
   }
@@ -56,7 +78,7 @@ export default function DashboardPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="max-w-4xl mx-auto px-4 py-6 pb-8">
-        <div className="flex flex-wrap justify-between items-center gap-4 mb-8 border-b border-gray-200 pb-4 bg-white/80 backdrop-blur-sm rounded-t-lg shadow-sm">
+        <div className="w-full bg-white flex justify-between items-center px-4 py-4 border-b border-gray-200 mb-8">
           <h1 className="text-2xl font-bold">Dashboard</h1>
           <Button variant="outline" onClick={handleLogout} className="whitespace-nowrap">
             Logout
