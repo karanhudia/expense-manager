@@ -133,6 +133,7 @@ This app uses HTTP cookies to maintain user sessions securely. Here's how it wor
 - **Login/Register:**
   - When a user logs in or registers, the backend sets a cookie named `user-email` containing the user's email address.
   - This cookie is set as `httpOnly`, `secure` (in production), `sameSite=lax`, and is scoped to the root path (`/`).
+  - **The cookie is persistent:** it is set with a 30-day expiration (`maxAge`), so users remain logged in even after closing the app or browser, until they explicitly log out.
   - The cookie is set using Next.js API routes (`/api/auth/login` and `/api/auth/register`).
 
 - **Session Validation:**
@@ -150,7 +151,7 @@ This app uses HTTP cookies to maintain user sessions securely. Here's how it wor
 - **Usage in API Routes:**
   - All protected API routes (such as `/api/expenses`) check the `user-email` cookie to identify the current user and fetch or modify their data accordingly.
 
-This approach provides a simple, secure, and stateless way to manage user sessions in a Next.js app.
+This approach provides a simple, secure, and persistent way to manage user sessions in a Next.js app.
 
 ## Progressive Web App (PWA) Support
 
